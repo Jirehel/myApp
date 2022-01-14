@@ -34,7 +34,7 @@
         {
             $params = explode('@', $this->action);
             //initiaalisation du controller
-            $controller = new $params[0](new DBConnection('myapp', '127.0.0.1', 'root', ''));
+            $controller = new $params[0](new DBConnection(DB_NAME, DB_HOST, DB_USER, DB_PWD));
             $method = $params[1];
              
             return isset($this->matches[1]) ? $controller->$method($this->matches[1]) : $controller->$method();
