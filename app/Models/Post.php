@@ -23,4 +23,13 @@ class Post extends Model {
             <a href="/myApp/posts/$this->id" class="btn btn-primary">Lire l'article</a>
         HTML;
     }
+
+    public function getTags()
+    {
+         return $this->query("
+            SELECT t.* FROM tags t
+            INNER JOIN post_tag pt ON pt.tag_id = t.id
+            WHERE pt.post_id = ?
+         ", $this->id);
+    }
 }  
