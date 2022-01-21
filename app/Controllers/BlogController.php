@@ -12,7 +12,7 @@ class BlogController extends Controller{
     }
     public function index()
     {
-        $postsss = (new Post($this->getDB()))->all();
+        $posts = (new Post($this->getDB()))->all();
         return $this->view('blog.index', compact('posts'));
     }
 
