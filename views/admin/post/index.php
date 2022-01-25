@@ -1,6 +1,9 @@
 <h1>Administration des articles</h1>
 
-<table class="table">
+<a href="/myApp/admin/posts/create" class="btn btn-primary">Créer un nouvel article</a>
+
+
+<table class="table mt-3">
   <thead>
     <tr>
       <th scope="col">#</th>
