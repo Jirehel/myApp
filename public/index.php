@@ -24,6 +24,8 @@ use App\Exceptions\NotFoundException;
 
 	$router->get('/admin/posts', 'App\Controllers\Admin\PostController@index');
 	$router->post('/admin/posts/delete/:id', 'App\Controllers\Admin\PostController@destroy');
+	$router->get('/admin/posts/edit/:id', 'App\Controllers\Admin\PostController@edit');
+	$router->post('/admin/posts/edit/:id', 'App\Controllers\Admin\PostController@update');
 
 
 try {
