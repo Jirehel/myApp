@@ -26,7 +26,7 @@ abstract class Model{
         return $this->query("SELECT * FROM posts WHERE id = ?", [$id], true);
     }
 
-    public function update(int $id, array $data)
+    public function update(int $id, array $data, ?array $relations = null)
     {
         $sqlRequestPart = "";
         $i = 1;
@@ -55,7 +55,7 @@ abstract class Model{
         if (
             strpos($sql, 'DELETE') === 0
             || strpos($sql, 'UPDATE') === 0
-            || strpos($sql, 'CREATE') === 0) {
+            || strpos($sql, 'INSERT') === 0) {
             
             $stmt = $this->db->getPDO()->$method($sql);
             $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
