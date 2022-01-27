@@ -25,6 +25,7 @@ class BlogController extends Controller{
     public function tag(int $id)
     {
         $tag = (new Tag($this->getDB()))->findById($id);
+        //var_dump($tag);
 
         return $this->view('blog.tag', compact('tag'));
 

@@ -27,7 +27,7 @@ class PostController extends Controller {
         //var_dump($post);
         $tags = array_pop($_POST);   
 
-        $result = $post->create($_POST, $tags); 
+        $result = $post->create($_POST, $tags);
 
         return header('Location: /myApp/admin/posts');
     }
