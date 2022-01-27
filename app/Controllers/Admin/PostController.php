@@ -23,7 +23,13 @@ class PostController extends Controller {
 
     public function createPost()
     {
+        $post = new Post($this->getDB());
+        //var_dump($post);
+        $tags = array_pop($_POST);   
 
+        $result = $post->create($_POST, $tags); 
+
+        return header('Location: /myApp/admin/posts');
     }
 
     public function edit(int $id)

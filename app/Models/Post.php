@@ -33,6 +33,19 @@ class Post extends Model {
          ", [$this->id]);
     }
 
+    public function create(array $data, ?array $relations = null)
+    {
+        parent::create($data);
+
+        $id = $this->db->getPDO()->lastInsertId();
+
+        foreach($relations as $tagId){
+            $stmt = $this->db->getPDO()->prepare("INSERT post_tag (post_id, tag_id) VALUES (?, ?)");
+            $stmt->execute([$id, $tagId]);
+        }
+        
+    }
+
     public function update(int $id, array $data, ?array $relations = null)
     {
         parent::update($id, $data);

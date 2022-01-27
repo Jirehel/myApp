@@ -26,13 +26,33 @@ abstract class Model{
         return $this->query("SELECT * FROM posts WHERE id = ?", [$id], true);
     }
 
+    public function create(array $data, ?array $relations = null)
+    {
+        //"INSERT INTO posts (title, content) VALUES(:title, :content)"
+
+        $firstParenthesis = "";
+        $secondParenthesis = "";
+        $i = 1;
+
+        foreach($data as $key => $value)
+        {
+            $comma = $i === count($data) ? "" : ', ';
+            $firstParenthesis .= "{$key}{$comma}";
+            $secondParenthesis  .= ":{$key}{$comma}";
+            $i++;
+        }
+        //var_dump($firstParenthesis, $secondParenthesis);die();
+        return $this->query("INSERT INTO {$this->table} ($firstParenthesis) 
+                             VALUES ($secondParenthesis)", $data);
+    }
+
     public function update(int $id, array $data, ?array $relations = null)
     {
         $sqlRequestPart = "";
         $i = 1;
 
         foreach ($data as $key => $value){
-            $comma = $i === count($data) ? " " : ', ';
+            $comma = $i === count($data) ? "" : ', ';
             $sqlRequestPart .= "{$key} = :{$key}{$comma}";
             $i++;
         }

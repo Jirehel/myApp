@@ -1,6 +1,6 @@
 <h1 class="mb-3"><?= $params['post']->title ?? 'Créer un nouvel article' ?></h1>
 
-<form action="<?= isset($params['post']) ? "/myApp/admin/posts/edit/{$params['post']->id}" : "/admin/posts/create" ?>" method="POSt">
+<form action="<?= isset($params['post']) ? "/myApp/admin/posts/edit/{$params['post']->id}" : "/myApp/admin/posts/create" ?>" method="POST">
     <div class="form-group">
         <label for="title">Titre de l'article</label>
         <input type="text" class="form-control" name="title" id="title" value="<?= $params['post']->title ?? '' ?>">
@@ -28,5 +28,6 @@
         </select>
     </div>
     <button type="submit" class="btn btn-primary"><?= isset($params['post']) ? 'Enregistrer les modifications' : 'Enregistrer mon article' ?></button>
+    
 </form>
 
