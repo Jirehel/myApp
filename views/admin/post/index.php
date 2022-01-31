@@ -1,5 +1,8 @@
 <h1>Administration des articles</h1>
 
+<?php if(isset($_GET['success'])): ?>
+    <div class="alert alert-success">Vous êtes connecté...</div>
+<?php endif ?>
 <a href="/myApp/admin/posts/create" class="btn btn-primary">Créer un nouvel article</a>
 
 
