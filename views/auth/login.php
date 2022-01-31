@@ -1,3 +1,19 @@
+<?php if(isset($_SESSION['errors'])): ?>
+
+<?php foreach ($_SESSION['errors'] as $errorsArray): ?>
+    <?php foreach ($errorsArray as $errors):?>
+        <div class="alert alert-danger">
+            <?php foreach ($errorsArray as $errors): ?>
+                <li><?= $error ?></li>
+            <?php endforeach ?>
+        </div>
+    <?php endforeach ?>
+<?php endforeach ?>
+<?php endif ?>
+
+<?php session_destroy(); ?>
+
+
 <h1 class="mb-3">Se connecter</h1>
 
 <form action="/myApp/login" method="POST">
